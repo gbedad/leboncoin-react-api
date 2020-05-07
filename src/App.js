@@ -3,15 +3,18 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Offers from "./containers/Offers";
 import Offer from "./containers/Offer";
-import Sign_up from "./containers/Sign-up";
-
+import SignUp from "./containers/SignUp";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 function App() {
   return (
     <Router>
-      {/* <Header></Header> */}
+      <Header>
+        <Header />
+      </Header>
       <Switch>
         <Route path="/sign_up">
-          <Sign_up />
+          <SignUp />
         </Route>
         <Route path="/offer/:id">
           <Offer />
@@ -20,6 +23,9 @@ function App() {
           <Offers />
         </Route>
       </Switch>
+      <Footer>
+        <Footer />
+      </Footer>
     </Router>
   );
 }

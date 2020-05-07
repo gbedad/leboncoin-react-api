@@ -9,31 +9,29 @@ const Offer = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
   /* params.id = "5eb1a944556ef700172ae925"; */
-  const getData = async () => {
-    try {
-      const response = await axios.get(
-        `https://leboncoin-api.herokuapp.com/offer/${id}`
-      );
-      setData(response.data);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
   useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await axios.get(
+          `https://leboncoin-api.herokuapp.com/offer/${id}`
+        );
+        setData(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
     getData();
-  }, []);
+  }, [id]);
 
   return isLoading ? (
     <span>Downloading article...</span>
   ) : (
     <div>
-      <div className="header">
-        Logo Déposer une annonce Rechercher Se connecter
-        <Link to="/">
-          <div>Go back to all offers</div>
-        </Link>
-      </div>
+      <Link to="/">
+        <div>Go back to all offers</div>
+      </Link>
       <main>
         <div className="offer">
           <div className="detailOffer">

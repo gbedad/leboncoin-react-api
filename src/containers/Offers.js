@@ -26,9 +26,6 @@ const Offers = () => {
     <span>Downloading...</span>
   ) : (
     <div>
-      <div className="header">
-        Logo Déposer une annonce Rechercher Se connecter
-      </div>
       <div className="ellipse"></div>
       <div className="breadcrumb">Recherche</div>
 

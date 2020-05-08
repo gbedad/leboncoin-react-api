@@ -1,37 +1,41 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
+import Cookies from "js-cookie";
+
+// IMPORT FONTAWESOME
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faBell, faEye, faClock } from "@fortawesome/free-regular-svg-icons";
 library.add(faBell, faEye, faClock);
 
-const SignUp = () => {
-  const [userSignup, setUserSignup] = useState({
-    email: "",
-    username: "",
-    password: "",
-    confirmPassword: "",
-  });
+const SignUp = ({ setUser }) => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [checkbox, setCheckbox] = useState(false);
 
-  const handleChange = (event) => {
-    setUserSignup({
-      ...userSignup,
-      [event.target.name]: event.target.value,
-    });
-  };
+  const history = useHistory();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    axios
-      .post("https://leboncoin-api.herokuapp.com/user/sign_up", userSignup)
-      .then(
-        (response) => {
-          console.log(response);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+    if (checkbox) {
+      if (password === confirmPassword) {
+        const response = await axios.post(
+          "https://leboncoin-api.herokuapp.com/user/sign_up",
+          { email: email, username: username, password: password }
+        );
+        console.log(response.data);
+        Cookies.set("userToken", response.data.token, { expires: 300 });
+        setUser(response.data.token);
+        history.push("/");
+      } else {
+        alert("Veuillez saisir deux passwords identiques");
+      }
+    } else {
+      alert("Veuillez accepter les conditions générales");
+    }
   };
 
   return (
@@ -71,38 +75,51 @@ const SignUp = () => {
           <h2>Créez un compte</h2>
           <div className="input-field">
             <input
-              type="email"
+              type="text"
               name="email"
-              value={userSignup.email}
-              onChange={handleChange}
+              value={username}
+              onChange={(event) => {
+                setUsername(event.target.value);
+              }}
+              placeholder="Pseudo"
               required
             />
             <input
-              type="text"
-              name="username"
-              value={userSignup.username}
-              onChange={handleChange}
+              type="email"
+              name="email"
+              value={email}
+              onChange={(event) => {
+                setEmail(event.target.value);
+              }}
+              placehaolder="Email"
               required
             />
             <input
               type="password"
               name="password"
-              value={userSignup.password}
-              onChange={handleChange}
+              value={password}
+              onChange={(event) => {
+                setPassword(event.target.value);
+              }}
+              placeholder="Password"
               required
             />
             <input
               type="password"
               name="confirmPassword"
-              value={userSignup.confirmPassword}
-              onChange={handleChange}
+              value={confirmPassword}
+              onChange={(event) => {
+                setConfirmPassword(event.target.value);
+              }}
               required
             />
             <input
               type="checkbox"
               name="check"
-              /* value={userSignup.confirmPassword} */
-              onChange={handleChange}
+              value={checkbox}
+              onChange={(event) => {
+                setCheckbox(event.target.value);
+              }}
               required
             />
           </div>

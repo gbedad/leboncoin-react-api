@@ -178,6 +178,7 @@ main {
   margin-bottom: 30px;
   border-top: #f56c2a solid 5px;
   text-align: center;
+  font-size: 16px;
 }
 
 .input-field input {

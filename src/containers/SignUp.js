@@ -4,10 +4,10 @@ import { useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
 
 // IMPORT FONTAWESOME
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { library } from "@fortawesome/fontawesome-svg-core";
+/* import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; */
+/* import { library } from "@fortawesome/fontawesome-svg-core";
 import { faBell, faEye, faClock } from "@fortawesome/free-regular-svg-icons";
-library.add(faBell, faEye, faClock);
+library.add(faBell, faEye, faClock); */
 
 const SignUp = ({ setUser }) => {
   const [username, setUsername] = useState("");
@@ -44,9 +44,9 @@ const SignUp = ({ setUser }) => {
         <h2>Pourquoi créer un compte ?</h2>
         <ul>
           <li>
-            <span>
+            {/*           <span>
               <FontAwesomeIcon icon="eye" />
-            </span>
+            </span> */}
             <h4>Gagnez du temps</h4>
             <p>
               Gagnez du temps Publiez vos annonces rapidement, avec vos
@@ -76,7 +76,7 @@ const SignUp = ({ setUser }) => {
           <div className="input-field">
             <input
               type="text"
-              name="email"
+              name="pseudo"
               value={username}
               onChange={(event) => {
                 setUsername(event.target.value);
@@ -116,9 +116,8 @@ const SignUp = ({ setUser }) => {
             <input
               type="checkbox"
               name="check"
-              value={checkbox}
-              onChange={(event) => {
-                setCheckbox(event.target.value);
+              onChange={() => {
+                setCheckbox(!checkbox);
               }}
               required
             />

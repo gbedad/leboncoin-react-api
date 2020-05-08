@@ -23,9 +23,8 @@ function App() {
           <SignUp />
         </Route>
         <Route path="/log_in">
-          <Login />
+          <Login setUser={setUser} />
         </Route>
-
         <Route path="/offer/:id">
           <Offer />
         </Route>

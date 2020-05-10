@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import format from "date-fns/format";
+import fr from "date-fns/locale/fr";
 /* import { useParams } from "react-router-dom"; */
 
 const Offers = () => {
@@ -28,17 +30,21 @@ const Offers = () => {
     <div>
       <div className="ellipse"></div>
       <div className="breadcrumb">Recherche</div>
-
-      <Link>
+      {/*  <Link>
         <p>link to selected offer</p>
-      </Link>
+      </Link> */}
+      <div>Pages : {data.count / 3}</div>
       {data.offers.map((item) => {
         return (
-          <Link key={item._id} to={`/offer/${item._id}`}>
+          <Link
+            key={item._id}
+            to={`/offer/${item._id}`}
+            style={{ textDecoration: "none", color: "blue" }}
+          >
             <div className="item">
               {/* <Link to="link"></Link>; */}
               <figure className="pic">
-                <img src={item.picture.secure_url} alt="voiture" />;
+                <img src={item.picture.secure_url} alt="voiture" />
               </figure>
               <div className="itemDetail">
                 <div className="desc">
@@ -46,7 +52,11 @@ const Offers = () => {
                   <span>{item.price} €</span>
                 </div>
 
-                <span>{item.created}</span>
+                <span>
+                  {format(new Date(item.created), "eeee, d MMMM yyyy à H:mm", {
+                    locale: fr,
+                  })}
+                </span>
               </div>
             </div>
           </Link>

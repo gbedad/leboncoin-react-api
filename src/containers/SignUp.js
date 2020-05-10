@@ -4,10 +4,10 @@ import { useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
 
 // IMPORT FONTAWESOME
-/* import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; */
-/* import { library } from "@fortawesome/fontawesome-svg-core";
-import { faBell, faEye, faClock } from "@fortawesome/free-regular-svg-icons";
-library.add(faBell, faEye, faClock); */
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faBell, faEye, faClock } from "@fortawesome/free-solid-svg-icons";
+library.add(faBell, faEye, faClock);
 
 const SignUp = ({ setUser }) => {
   const [username, setUsername] = useState("");
@@ -44,9 +44,6 @@ const SignUp = ({ setUser }) => {
         <h2>Pourquoi créer un compte ?</h2>
         <ul>
           <li>
-            {/*           <span>
-              <FontAwesomeIcon icon="eye" />
-            </span> */}
             <h4>Gagnez du temps</h4>
             <p>
               Gagnez du temps Publiez vos annonces rapidement, avec vos
@@ -74,6 +71,7 @@ const SignUp = ({ setUser }) => {
         <form className="create" onSubmit={handleSubmit}>
           <h2>Créez un compte</h2>
           <div className="input-field">
+            <span>Pseudo</span>
             <input
               type="text"
               name="pseudo"
@@ -84,6 +82,8 @@ const SignUp = ({ setUser }) => {
               placeholder="Pseudo"
               required
             />
+
+            <span>email</span>
             <input
               type="email"
               name="email"
@@ -94,6 +94,8 @@ const SignUp = ({ setUser }) => {
               placehaolder="Email"
               required
             />
+
+            <span>Password</span>
             <input
               type="password"
               name="password"
@@ -104,6 +106,8 @@ const SignUp = ({ setUser }) => {
               placeholder="Password"
               required
             />
+
+            <span>Confirm password</span>
             <input
               type="password"
               name="confirmPassword"
@@ -113,14 +117,24 @@ const SignUp = ({ setUser }) => {
               }}
               required
             />
-            <input
-              type="checkbox"
-              name="check"
-              onChange={() => {
-                setCheckbox(!checkbox);
-              }}
-              required
-            />
+            <div className="checked">
+              <input
+                type="checkbox"
+                name="check"
+                onChange={() => {
+                  setCheckbox(!checkbox);
+                }}
+                required
+              />
+              <p>
+                « J’accepte les{" "}
+                <span>
+                  Conditions Générales de Vente et les Conditions Générales
+                  d’Utilisation
+                </span>{" "}
+                »
+              </p>
+            </div>
           </div>
 
           <div className="submit">

@@ -3,7 +3,12 @@ body {
   font-family: "Roboto", sans-serif;
   box-sizing: border-box;
 }
+.deco {
+  text-decoration: none;
+}
 .header {
+  position: fixed;
+  top: 0;
   width: 100%;
   height: 60px;
   margin: 0 auto;
@@ -16,20 +21,30 @@ body {
   width: 1000px;
   margin: 0 auto;
 }
-.header img {
-  width: 167px;
+.header > div img {
+  height: 30px;
+  line-height: 60px;
+}
+.subheader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .breadcrumb {
+  z-index: 98;
+  position: sticky;
+  top: 80px;
   width: 600px;
   height: 120px;
   margin: 20px auto;
+  margin-bottom: 90px;
   background-color: white;
   border-radius: 5px;
   border: #f56c2a 1px solid;
 }
 .ellipse {
   background-color: #f56c2a;
-  z-index: -1;
+  z-index: 0;
   margin: 0 auto;
   width: 2600px;
   height: 500px;
@@ -38,6 +53,7 @@ body {
   top: -350px;
   left: calc(50% - 1300px);
 }
+
 .item {
   margin: 0 auto 20px auto;
   display: flex;
@@ -83,7 +99,7 @@ figure img {
 main {
   display: flex;
   width: 860px;
-  margin: 0 auto;
+  margin: 120px auto;
 }
 .offer {
   margin: 0 auto;
@@ -168,6 +184,21 @@ main {
   font-weight: 600;
   line-height: 50px;
 }
+.pourquoi ul {
+  padding: 0;
+  margin: 0;
+  list-style-position: initial;
+}
+
+.pourquoi ul > li:nth-child(1) {
+  list-style-image: url("./assets/images/schedule_24px_outlined.svg");
+}
+.pourquoi ul > li:nth-child(2) {
+  list-style-image: url("./assets/images/notifications_none_24px_outlined.svg");
+}
+.pourquoi ul > li:nth-child(3) {
+  list-style-image: url("./assets/images/remove_red_eye_24px_outlined.svg");
+}
 .pourquoi,
 .form {
   width: 370px;
@@ -177,7 +208,7 @@ main {
 .input-field {
   margin-bottom: 30px;
   border-top: #f56c2a solid 5px;
-  text-align: center;
+  text-align: left;
   font-size: 16px;
 }
 
@@ -188,8 +219,8 @@ main {
   border: 1px solid #d9e0eb;
   box-sizing: border-box;
   border-radius: 5px;
-  border: 20px 0;
-  margin: 20px 0;
+  /* border: 20px 0; */
+  /*  margin: 20px 0; */
 }
 .input-field input:nth-child(3),
 input:nth-child(4) {
@@ -199,9 +230,34 @@ input:nth-child(4) {
   border: 1px solid #d9e0eb;
   box-sizing: border-box;
   border-radius: 5px;
-  border: 20px 0;
+  /*   border: 20px 0;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 20px; */
+}
+.input-field > span {
+  line-height: 16px;
+  text-align: left;
+}
+
+.checked {
+  display: flex;
+}
+.checked p {
+  margin-top: 10px;
+  line-height: 18px;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: left;
+}
+.checked input {
+  border-color: #f56c2a;
+  color: orange;
+  width: 40px;
+  margin: 0 10px;
+}
+.checked p span {
+  color: #4183d7;
+  font-weight: 500;
 }
 
 .pourquoi > ul h4 {
@@ -228,6 +284,25 @@ input:nth-child(4) {
   font-size: 16px;
   font-weight: 500;
 }
+
+/**FORM LOGIN */
+.login {
+  width: 500px;
+  height: 500px;
+  background-color: #ffffff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 30px auto;
+  padding: 20px;
+}
+.login form,
+button {
+  margin: 0 auto;
+}
+
 .footer {
   width: 100%;
   height: 80px;

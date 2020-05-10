@@ -61,13 +61,15 @@ const Login = ({ setUserToken }) => {
       </div>
       <div className="submit">
         <div>Vous n'avez pas encore de compte ?</div>
-        <button
-          onClick={() => {
-            history.push("/sign_up");
-          }}
-        >
-          Créer un compte
-        </button>
+        <div>
+          <button
+            onClick={() => {
+              history.push("/sign_up");
+            }}
+          >
+            Créer un compte
+          </button>
+        </div>
       </div>
     </div>
   );

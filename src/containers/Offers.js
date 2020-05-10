@@ -39,7 +39,7 @@ const Offers = () => {
           <Link
             key={item._id}
             to={`/offer/${item._id}`}
-            style={{ textDecoration: "none", color: "blue" }}
+            style={{ textDecoration: "none", color: "black" }}
           >
             <div className="item">
               {/* <Link to="link"></Link>; */}

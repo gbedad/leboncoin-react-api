@@ -9,14 +9,15 @@ const Header = ({ userToken, setUserToken }) => {
     <div className="header">
       <div className="subheader">
         <img src={LogoLeboncoin} alt="logo" />
-        <div>
-          <button>Déposer une annonce</button>
-          <input></input>
+        <div className="headersearch">
+          <button className="announce">Déposer une annonce</button>
+          <input className="search"></input>
         </div>
 
         <div>
           {!userToken ? (
             <button
+              className="announce"
               onClick={() => {
                 history.push("/log_in");
               }}

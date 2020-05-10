@@ -3,12 +3,6 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
 
-// IMPORT FONTAWESOME
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faBell, faEye, faClock } from "@fortawesome/free-solid-svg-icons";
-library.add(faBell, faEye, faClock);
-
 const SignUp = ({ setUser }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -68,81 +62,94 @@ const SignUp = ({ setUser }) => {
         </ul>
       </div>
       <div className="form">
-        <form className="create" onSubmit={handleSubmit}>
-          <h2>Créez un compte</h2>
-          <div className="input-field">
-            <span>Pseudo</span>
-            <input
-              type="text"
-              name="pseudo"
-              value={username}
-              onChange={(event) => {
-                setUsername(event.target.value);
-              }}
-              placeholder="Pseudo"
-              required
-            />
+        <div className="create">
+          <form onSubmit={handleSubmit}>
+            <h2>Créez un compte</h2>
+            <div className="input-field">
+              <div>
+                <span>Pseudo *</span>
+                <input
+                  type="text"
+                  name="pseudo"
+                  value={username}
+                  onChange={(event) => {
+                    setUsername(event.target.value);
+                  }}
+                  placeholder="Pseudo"
+                  required
+                />
+              </div>
 
-            <span>email</span>
-            <input
-              type="email"
-              name="email"
-              value={email}
-              onChange={(event) => {
-                setEmail(event.target.value);
-              }}
-              placehaolder="Email"
-              required
-            />
+              <div>
+                <span>email *</span>
+                <input
+                  type="email"
+                  name="email"
+                  value={email}
+                  onChange={(event) => {
+                    setEmail(event.target.value);
+                  }}
+                  placehaolder="Email"
+                  required
+                />
+              </div>
 
-            <span>Password</span>
-            <input
-              type="password"
-              name="password"
-              value={password}
-              onChange={(event) => {
-                setPassword(event.target.value);
-              }}
-              placeholder="Password"
-              required
-            />
+              <div className="password">
+                <div>
+                  <span>Password *</span>
+                  <input
+                    type="password"
+                    name="password"
+                    value={password}
+                    onChange={(event) => {
+                      setPassword(event.target.value);
+                    }}
+                    placeholder="Password"
+                    required
+                  />
+                </div>
 
-            <span>Confirm password</span>
-            <input
-              type="password"
-              name="confirmPassword"
-              value={confirmPassword}
-              onChange={(event) => {
-                setConfirmPassword(event.target.value);
-              }}
-              required
-            />
-            <div className="checked">
-              <input
-                type="checkbox"
-                name="check"
-                onChange={() => {
-                  setCheckbox(!checkbox);
-                }}
-                required
-              />
-              <p>
-                « J’accepte les{" "}
-                <span>
-                  Conditions Générales de Vente et les Conditions Générales
-                  d’Utilisation
-                </span>{" "}
-                »
-              </p>
+                <div>
+                  <span>Confirm password *</span>
+                  <input
+                    type="password"
+                    name="confirmPassword"
+                    value={confirmPassword}
+                    onChange={(event) => {
+                      setConfirmPassword(event.target.value);
+                    }}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="checked">
+                <input
+                  type="checkbox"
+                  name="check"
+                  onChange={() => {
+                    setCheckbox(!checkbox);
+                  }}
+                  required
+                />
+                <p>
+                  « J’accepte les{" "}
+                  <span>
+                    Conditions Générales de Vente et les Conditions Générales
+                    d’Utilisation
+                  </span>{" "}
+                  »
+                </p>
+              </div>
             </div>
-          </div>
 
-          <div className="submit">
-            <button className="btn blue darken-3" type="submit">
-              Créer mon Compte Personnel
-            </button>
-          </div>
-        </form>
+            <div className="submit">
+              <button className="btn blue darken-3" type="submit">
+                Créer mon Compte Personnel
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

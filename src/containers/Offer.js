@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import format from "date-fns/format";
+import fr from "date-fns/locale/fr";
 
 const Offer = () => {
   /* const params = useParams(); */
@@ -29,19 +31,20 @@ const Offer = () => {
     <span>Downloading article...</span>
   ) : (
     <div>
-      <Link to="/">
-        <div>Go back to all offers</div>
-      </Link>
       <main>
         <div className="offer">
           <div className="detailOffer">
             <img src={data.picture.secure_url} alt="detail offre" />
             <h2>{data.title}</h2>
             <span>{data.price} €</span>
-            <p>{data.created}</p>
-            <p>{data._id}</p>
+
+            <p>
+              {format(new Date(data.created), "eeee, d MMMM yyyy à H:mm", {
+                locale: fr,
+              })}
+            </p>
           </div>
-          <div>
+          <div className="detaildesc">
             <h3>Description</h3>
             <p>{data.description}</p>
           </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import Cookies from "js-cookie";
 
 import LogoLeboncoin from "../assets/images/logoLeboncoin.png";
@@ -10,8 +10,13 @@ const Header = ({ userToken, setUserToken }) => {
       <div className="subheader">
         <img src={LogoLeboncoin} alt="logo" />
         <div className="headersearch">
-          <button className="announce">Déposer une annonce</button>
-          <input className="search"></input>
+          <Link to="/offer/publish">
+            {" "}
+            <button className="announce">Déposer une annonce</button>
+          </Link>
+          <div>
+            <input className="search"></input>
+          </div>
         </div>
 
         <div>

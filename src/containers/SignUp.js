@@ -3,7 +3,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
 
-const SignUp = ({ setUser }) => {
+const SignUp = ({ setUserToken }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,9 +20,9 @@ const SignUp = ({ setUser }) => {
           "https://leboncoin-api.herokuapp.com/user/sign_up",
           { email: email, username: username, password: password }
         );
-        console.log(response.data);
+        setUserToken(response.data.token);
         Cookies.set("userToken", response.data.token, { expires: 300 });
-        setUser(response.data.token);
+
         history.push("/");
       } else {
         alert("Veuillez saisir deux passwords identiques");
@@ -64,7 +64,10 @@ const SignUp = ({ setUser }) => {
       <div className="form">
         <div className="create">
           <form onSubmit={handleSubmit}>
-            <h2>Créez un compte</h2>
+            <div className="modalTitle">
+              <span>Créez un compte</span>
+            </div>
+
             <div className="input-field">
               <div>
                 <span>Pseudo *</span>
@@ -144,9 +147,7 @@ const SignUp = ({ setUser }) => {
             </div>
 
             <div className="submit">
-              <button className="btn blue darken-3" type="submit">
-                Créer mon Compte Personnel
-              </button>
+              <button type="submit">Créer mon Compte Personnel</button>
             </div>
           </form>
         </div>

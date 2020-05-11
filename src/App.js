@@ -8,24 +8,26 @@ import Offers from "./containers/Offers";
 import Offer from "./containers/Offer";
 import SignUp from "./containers/SignUp";
 import Login from "./containers/Login";
-import Search from "./containers/Search";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Publish from "./containers/Publish";
 function App() {
   const tokenFromCookie = Cookies.get("userToken");
   const [userToken, setUserToken] = useState(tokenFromCookie || null);
   return (
     <Router>
       <Header userToken={userToken} setUserToken={setUserToken} />
-
       <Switch>
         <Route path="/sign_up">
-          <SignUp />
+          <SignUp setUserToken={setUserToken} />
         </Route>
         <Route path="/log_in">
           <Login setUserToken={setUserToken} />
         </Route>
-
+        <Route path="/offer/publish">
+          <Publish userToken={userToken} />
+        </Route>
         <Route path="/offer/:id">
           <Offer />
         </Route>
@@ -33,7 +35,6 @@ function App() {
           <Offers />
         </Route>
       </Switch>
-
       <Footer />
     </Router>
   );

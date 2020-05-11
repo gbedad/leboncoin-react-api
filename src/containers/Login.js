@@ -21,23 +21,31 @@ const Login = ({ setUserToken }) => {
     <div className="login">
       <div className="form">
         <form className="create" onSubmit={handleSubmit}>
-          <h2>Connexion</h2>
-          <div className="input-field">
-            <input
-              type="email"
-              name="email"
-              /* value={email} */
-              onChange={(event) => setEmail(event.target.value)}
-            />
+          <div className="modalTitle">
+            <span>Connexion</span>
+          </div>
 
-            <input
-              type="password"
-              name="password"
-              /* value={password} */
-              onChange={(event) => {
-                setPassword(event.target.value);
-              }}
-            />
+          <div className="input-field">
+            <span>Email *</span>
+            <div>
+              <input
+                type="email"
+                name="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+              />
+            </div>
+            <span>Password *</span>
+            <div>
+              <input
+                type="password"
+                name="password"
+                value={password}
+                onChange={(event) => {
+                  setPassword(event.target.value);
+                }}
+              />
+            </div>
           </div>
 
           <div className="submit">
@@ -59,9 +67,9 @@ const Login = ({ setUserToken }) => {
           </div>
         </form>
       </div>
-      <div className="submit">
-        <div>Vous n'avez pas encore de compte ?</div>
-        <div>
+      <div>
+        <div className="noaccount">Vous n'avez pas encore de compte ?</div>
+        <div className="submit">
           <button
             onClick={() => {
               history.push("/sign_up");

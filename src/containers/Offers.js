@@ -9,13 +9,15 @@ const Offers = () => {
   /* const params = useParams(); */
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [page, setPage] = useState(0);
 
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "https://leboncoin-api.herokuapp.com/offer/with-count"
+        `https://leboncoin-api.herokuapp.com/offer/with-count?page=${setPage}&limit=4`
       );
       setData(response.data);
+
       setIsLoading(false);
     } catch (error) {
       console.log(error.message);
@@ -33,7 +35,23 @@ const Offers = () => {
       {/*  <Link>
         <p>link to selected offer</p>
       </Link> */}
-      <div>Pages : {data.count / 3}</div>
+      <div> {Math.round(data.count / 3)} pages</div>
+      <button
+        onClick={() => {
+          setPage(page + 1);
+        }}
+      >
+        1
+      </button>
+      <button
+        onClick={() => {
+          const newPage = page + 2;
+          setPage(newPage);
+        }}
+      >
+        2
+      </button>
+      <button>3</button>
       {data.offers.map((item) => {
         return (
           <Link

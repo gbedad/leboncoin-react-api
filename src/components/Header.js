@@ -8,7 +8,9 @@ const Header = ({ userToken, setUserToken }) => {
   return (
     <div className="header">
       <div className="subheader">
-        <img src={LogoLeboncoin} alt="logo" />
+        <Link to="/">
+          <img src={LogoLeboncoin} alt="logo" />
+        </Link>
         <div className="headersearch">
           <Link to="/offer/publish">
             {" "}

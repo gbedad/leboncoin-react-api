@@ -30,7 +30,7 @@ const Publish = ({ userToken }) => {
           },
         }
       );
-
+      history.push(`/offer/${response.data._id}`);
       /* setData(response.data); */
 
       alert(JSON.stringify(response.data));
@@ -57,6 +57,7 @@ const Publish = ({ userToken }) => {
             /* value={title} */
             placeholder="title"
             onChange={(event) => setTitle(event.target.value)}
+            required
           />
         </div>
         <span>Texte de l'annonce *</span>
@@ -66,6 +67,7 @@ const Publish = ({ userToken }) => {
             /* value={description} */
             placeholder="description"
             onChange={(event) => setDescription(event.target.value)}
+            required
           />
         </div>
         <span>Prix *</span>
@@ -75,6 +77,7 @@ const Publish = ({ userToken }) => {
             /*  value={price} */
             placeholder="price"
             onChange={(event) => setPrice(Number(event.target.value))}
+            required
           />
           <span>€</span>
         </div>

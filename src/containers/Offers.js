@@ -26,6 +26,10 @@ const Offers = () => {
   useEffect(() => {
     fetchData();
   }, []);
+  const pageNum = [];
+  for (let i = 1; i <= data.count / 4; i++) {
+    pageNum.push(i);
+  }
   return isLoading ? (
     <span>Downloading...</span>
   ) : (
@@ -35,23 +39,22 @@ const Offers = () => {
       {/*  <Link>
         <p>link to selected offer</p>
       </Link> */}
-      <div> {Math.round(data.count / 3)} pages</div>
-      <button
-        onClick={() => {
-          setPage(page + 1);
-        }}
-      >
-        1
-      </button>
-      <button
-        onClick={() => {
-          const newPage = page + 2;
-          setPage(newPage);
-        }}
-      >
-        2
-      </button>
-      <button>3</button>
+      <div> {Math.round(data.count / 4)} pages</div>
+      <div className="page">
+        {pageNum.map((i) => {
+          return (
+            <button
+              onClick={() => {
+                const newPage = page + i;
+                setPage(newPage);
+              }}
+            >
+              {i}
+            </button>
+          );
+        })}
+      </div>
+
       {data.offers.map((item) => {
         return (
           <Link

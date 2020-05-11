@@ -451,3 +451,8 @@ button {
 .noaccount {
   line-height: 22px;
 }
+.page {
+  width: 30px;
+  display: flex;
+  margin-left: 30px;
+}

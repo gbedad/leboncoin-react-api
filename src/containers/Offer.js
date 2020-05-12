@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import format from "date-fns/format";
 import fr from "date-fns/locale/fr";
 
@@ -10,6 +10,7 @@ const Offer = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
+  const history = useHistory();
   /* params.id = "5eb1a944556ef700172ae925"; */
   useEffect(() => {
     const getData = async () => {
@@ -51,7 +52,17 @@ const Offer = () => {
         </div>
         <div className="vendor">
           {data.creator.account.username}
-          <button>Achetez</button>
+          <button
+            onClick={() => {
+              history.push("/payment", {
+                title: data.title,
+                amount: data.price,
+                picture: data.picture.secure_url,
+              });
+            }}
+          >
+            Achetez
+          </button>
         </div>
       </main>
     </div>

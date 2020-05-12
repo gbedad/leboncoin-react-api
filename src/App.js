@@ -12,6 +12,7 @@ import Login from "./containers/Login";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Publish from "./containers/Publish";
+import Payment from "./containers/Payment";
 function App() {
   const tokenFromCookie = Cookies.get("userToken");
   const [userToken, setUserToken] = useState(tokenFromCookie || null);
@@ -30,6 +31,9 @@ function App() {
         </Route>
         <Route path="/offer/:id">
           <Offer />
+        </Route>
+        <Route path="/payment">
+          <Payment />
         </Route>
         <Route path="/">
           <Offers />

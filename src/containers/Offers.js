@@ -10,20 +10,20 @@ const Offers = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(0);
-
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        `https://leboncoin-api.herokuapp.com/offer/with-count?limit=3&page=${page}`
-      );
-      setData(response.data);
-
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://leboncoin-api.herokuapp.com/offer/with-count?limit=3&page=${page}`
+        );
+        setData(response.data);
+
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
     fetchData();
   }, [page]);
   const pageNum = [];

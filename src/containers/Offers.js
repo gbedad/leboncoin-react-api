@@ -14,7 +14,7 @@ const Offers = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `https://leboncoin-api.herokuapp.com/offer/with-count?page=${setPage}&limit=4`
+        `https://leboncoin-api.herokuapp.com/offer/with-count?limit=3&page=${page}`
       );
       setData(response.data);
 
@@ -25,7 +25,7 @@ const Offers = () => {
   };
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [page]);
   const pageNum = [];
   for (let i = 1; i <= data.count / 4; i++) {
     pageNum.push(i);
@@ -41,12 +41,12 @@ const Offers = () => {
       </Link> */}
       <div> {Math.round(data.count / 4)} pages</div>
       <div className="page">
-        {pageNum.map((i) => {
+        {pageNum.map((i, index) => {
           return (
             <button
+              key="index"
               onClick={() => {
-                const newPage = page + i;
-                setPage(newPage);
+                setPage(index + 1);
               }}
             >
               {i}

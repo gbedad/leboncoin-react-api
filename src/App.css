@@ -486,9 +486,26 @@ button {
   text-align: center;
 }
 .paiement button {
+  background-color: #10cd65;
+  height: 40px;
+  width: 300px;
+  color: #ffffff;
+  text-align: center;
+  margin: 10px auto;
+}
+.paiementnok button {
   background-color: #f56c2a;
   height: 40px;
   width: 300px;
   color: #ffffff;
   text-align: center;
+  margin: 10px auto;
+}
+.stop button {
+  background-color: red;
+  height: 40px;
+  width: 150px;
+  color: #ffffff;
+  text-align: center;
+  margin: 10px auto;
 }

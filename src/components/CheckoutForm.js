@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
-
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 const CheckoutForm = ({ title, amount }) => {
@@ -8,6 +8,8 @@ const CheckoutForm = ({ title, amount }) => {
   const elements = useElements();
   const [completed, setCompleted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [buttonColor, setButtonColor] = useState(true);
+  const history = useHistory();
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -48,16 +50,26 @@ const CheckoutForm = ({ title, amount }) => {
             onChange={(event) => {
               if (event.complete) {
                 setIsLoading(false);
+                if (isLoading) {
+                  setButtonColor(false);
+                }
               }
             }}
           />
-          <button
-            className="paiement"
-            type="submit"
-            disabled={isLoading ? true : false}
-          >
-            Procéder au paiement
-          </button>
+          <div className={buttonColor ? "paiementnok" : "paiement"}>
+            <button type="submit" disabled={isLoading ? true : false}>
+              Procéder au paiement
+            </button>
+          </div>
+          <div className="stop">
+            <button
+              onClick={() => {
+                history.push("/");
+              }}
+            >
+              Abandon
+            </button>
+          </div>
         </form>
       ) : (
         <span>Paiement effectué ! </span>
